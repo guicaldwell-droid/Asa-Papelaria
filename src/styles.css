@@ -190,3 +190,5 @@ h1, h2, h3 { text-wrap: balance; letter-spacing: -0.015em; }
   .sky-clouds, .panel-enter, .wa-float { animation: none; }
   .tap:hover, .tap:active { transform: none; }
 }
+
+#lovable-badge { display: none !important; }
