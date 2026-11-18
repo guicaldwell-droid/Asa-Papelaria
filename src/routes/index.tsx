@@ -45,7 +45,6 @@ function Sky() {
   return (
     <div className="sky-bg" aria-hidden="true">
       <div className="sky-base" style={{ backgroundImage: `url(${skyBase})` }} />
-      <div className="sky-atmosphere" />
       <CloudTrack image={cloudsFar} className="sky-far" />
       <CloudTrack image={cloudsNear} className="sky-near" />
     </div>
