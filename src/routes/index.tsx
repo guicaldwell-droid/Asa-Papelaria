@@ -145,7 +145,7 @@ function Index() {
           >
             <div>
               <p className="eyebrow">Papelaria de bairro · Asa Norte</p>
-              <h1 className="display-title hero-title mt-4 text-[2.45rem] font-normal leading-[1.04] sm:text-5xl lg:text-[4rem]">
+              <h1 className="display-title hero-title mt-4 text-[2.45rem] leading-[1.04] sm:text-5xl lg:text-[4rem]">
                 <span>Papelaria,</span>
                 <span>cópias e impressão</span>
                 <span className="hero-title-accent">na Asa Norte</span>
@@ -203,7 +203,7 @@ function Index() {
           <section id="servicos" className="scroll-mt-6 py-14 sm:py-20">
             <div className="section-heading-row">
               <p className="eyebrow">No dia a dia</p>
-              <h2 className="display-title section-title mt-2 text-3xl font-normal sm:text-4xl">
+              <h2 className="display-title section-title mt-2 text-3xl sm:text-4xl">
                 O que você encontra por aqui
               </h2>
             </div>
@@ -227,7 +227,7 @@ function Index() {
           <section className="quote-panel grid gap-8 rounded-3xl p-6 sm:p-10 md:grid-cols-2">
             <div>
               <p className="eyebrow">Sem surpresa na hora de imprimir</p>
-              <h2 className="display-title section-title mt-2 text-3xl font-normal sm:text-4xl">
+              <h2 className="display-title section-title mt-2 text-3xl sm:text-4xl">
                 Preços e orçamento
               </h2>
               <p className="mt-4 text-muted-foreground">
@@ -261,7 +261,7 @@ function Index() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="eyebrow">O que dizem por lá</p>
-                <h2 className="display-title section-title mt-2 text-3xl font-normal sm:text-4xl">
+                <h2 className="display-title section-title mt-2 text-3xl sm:text-4xl">
                   Avaliações
                 </h2>
                 <p className="mt-3 text-muted-foreground">
@@ -298,9 +298,7 @@ function Index() {
           >
             <div>
               <p className="eyebrow">Perto de você</p>
-              <h2 className="display-title section-title mt-2 text-3xl font-normal sm:text-4xl">
-                Como chegar
-              </h2>
+              <h2 className="display-title section-title mt-2 text-3xl sm:text-4xl">Como chegar</h2>
               <address className="mt-4 not-italic text-muted-foreground">
                 Asa Norte Comércio Local Norte 207, Bloco D<br />
                 Asa Norte, Brasília–DF · CEP 70852-540

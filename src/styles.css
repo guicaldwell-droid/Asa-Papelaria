@@ -50,7 +50,7 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: "Archivo Black", sans-serif;
+  --font-display: "Bricolage Grotesque", sans-serif;
   --font-sans: "Source Sans 3", sans-serif;
 }
 
@@ -58,7 +58,7 @@
   --radius: 0.9rem;
   --background: oklch(0.9 0.055 228);
   --foreground: oklch(0.25 0.025 246);
-  --card: oklch(1 0.006 230);
+  --card: oklch(1 0.002 230);
   --card-foreground: oklch(0.25 0.025 246);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.25 0.025 246);
@@ -80,10 +80,10 @@
   --navy: oklch(0.3 0.06 244);
   --sun: oklch(0.9 0.09 95);
   --whatsapp: oklch(0.62 0.16 151);
-  --paper: oklch(0.995 0.003 230);
-  --panel-edge: oklch(0.91 0.052 224 / 0.72);
+  --paper: oklch(0.998 0.001 230);
+  --panel-edge: oklch(0.95 0.03 224 / 0.55);
   --glass-surface: oklch(0.995 0.006 230 / 0.77);
-  --glass-edge: oklch(1 0.01 230 / 0.92);
+  --glass-edge: oklch(0.94 0.015 228 / 0.45);
   --shadow-soft: oklch(0.35 0.06 242 / 0.12);
   --shadow-button: oklch(0.35 0.085 244 / 0.22);
   --shadow-whatsapp: oklch(0.3 0.07 150 / 0.28);
@@ -214,6 +214,14 @@ h3 {
 }
 .sky-far {
   animation-duration: 220s;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 .sky-far .sky-cloud-image {
   opacity: 0.34;
@@ -225,6 +233,8 @@ h3 {
   height: min(66vh, 760px);
   animation-duration: 168s;
   animation-direction: reverse;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 18%);
 }
 .sky-near .sky-cloud-image {
   background-position: center bottom;
@@ -260,14 +270,14 @@ h3 {
   background: linear-gradient(
     90deg,
     var(--panel-edge) 0%,
-    var(--paper) 16%,
-    var(--paper) 84%,
+    var(--paper) 10%,
+    var(--paper) 90%,
     var(--panel-edge) 100%
   );
-  border: 1px solid var(--glass-edge);
+  border: none;
   box-shadow:
-    0 22px 64px -36px var(--shadow-soft),
-    0 1px 0 var(--glass-edge) inset;
+    0 24px 80px -20px var(--shadow-soft),
+    0 8px 32px -12px oklch(0.35 0.06 242 / 0.08);
 }
 .panel-enter {
   animation: panel-arrive 720ms cubic-bezier(0.2, 0.72, 0.24, 1) both;
@@ -275,9 +285,9 @@ h3 {
 
 .display-title {
   font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
   color: var(--navy);
 }
 .hero-title span {
@@ -298,14 +308,12 @@ h3 {
 
 .glass-nav {
   padding: 0.28rem;
-  border: 1px solid var(--glass-edge);
+  border: 1px solid oklch(0.82 0.03 228 / 0.35);
   border-radius: 999px;
-  background: var(--glass-surface);
-  box-shadow:
-    0 5px 18px -14px var(--shadow-soft),
-    0 1px 0 var(--glass-edge) inset;
-  -webkit-backdrop-filter: blur(12px) saturate(1.05);
-  backdrop-filter: blur(12px) saturate(1.05);
+  background: oklch(0.97 0.01 228 / 0.6);
+  box-shadow: 0 5px 18px -14px var(--shadow-soft);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  backdrop-filter: blur(14px) saturate(1.1);
 }
 .nav-link {
   min-height: 2.5rem;
@@ -330,20 +338,32 @@ h3 {
   -webkit-tap-highlight-color: transparent;
 }
 .button-primary {
-  border: 1px solid var(--primary);
-  background: var(--primary);
+  border: 1px solid oklch(0.42 0.09 240 / 0.35);
+  background: oklch(0.42 0.1 238 / 0.78);
   color: var(--primary-foreground);
-  box-shadow: 0 7px 18px -13px var(--shadow-button);
+  box-shadow:
+    0 8px 24px -10px var(--shadow-button),
+    inset 0 1px 0 oklch(1 0 0 / 0.14);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+}
+.button-primary:hover {
+  background: oklch(0.38 0.11 240 / 0.88);
+  border-color: oklch(0.38 0.11 240 / 0.5);
 }
 .glass-action {
-  border: 1px solid var(--glass-edge);
-  background: var(--glass-surface);
+  border: 1px solid oklch(0.82 0.03 228 / 0.4);
+  background: oklch(0.96 0.015 228 / 0.55);
   color: var(--primary);
   box-shadow:
-    0 4px 16px -13px var(--shadow-soft),
-    0 1px 0 var(--glass-edge) inset;
-  -webkit-backdrop-filter: blur(8px) saturate(1.05);
-  backdrop-filter: blur(8px) saturate(1.05);
+    0 6px 20px -12px var(--shadow-soft),
+    inset 0 1px 0 oklch(1 0 0 / 0.18);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  backdrop-filter: blur(14px) saturate(1.1);
+}
+.glass-action:hover {
+  background: oklch(0.94 0.02 228 / 0.68);
+  border-color: oklch(0.78 0.04 228 / 0.5);
 }
 .tap {
   transition:
@@ -355,7 +375,6 @@ h3 {
 }
 .tap:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px -15px var(--shadow-button);
 }
 .tap:active {
   transform: translateY(0) scale(0.97);
@@ -422,9 +441,9 @@ a:focus-visible {
   background: var(--secondary);
 }
 .quote-checklist {
-  border: 1px solid var(--glass-edge);
+  border: 1px solid oklch(0.88 0.025 228 / 0.5);
   background: var(--paper);
-  box-shadow: 0 1px 0 var(--glass-edge) inset;
+  box-shadow: 0 4px 16px -10px var(--shadow-soft);
 }
 .list-dot {
   border-radius: 50%;
@@ -457,11 +476,13 @@ a:focus-visible {
   justify-content: center;
   gap: 0.55rem;
   padding: 0 1.05rem;
-  border: 1px solid var(--glass-edge);
+  border: none;
   border-radius: 999px;
   background: var(--whatsapp);
   color: var(--primary-foreground);
-  box-shadow: 0 10px 25px -10px var(--shadow-whatsapp);
+  box-shadow:
+    0 10px 25px -10px var(--shadow-whatsapp),
+    inset 0 1px 0 oklch(1 0 0 / 0.12);
   animation: whatsapp-halo 1.7s ease-out 1.2s 2;
   text-decoration: none;
 }
@@ -479,8 +500,8 @@ a:focus-visible {
 @media (max-width: 767px) {
   .panel {
     background: var(--paper);
-    border-color: var(--glass-edge);
-    box-shadow: 0 16px 46px -34px var(--shadow-soft);
+    border: none;
+    box-shadow: 0 16px 46px -24px var(--shadow-soft);
   }
   .hero-title {
     letter-spacing: -0.04em;
