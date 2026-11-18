@@ -1,33 +1,9 @@
-/*
- * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
- * - Keep every @import in this top block, above @theme and the rest of the file. Install an
- *   npm package before @importing its CSS. Never @import a remote URL (web fonts, CDN CSS): the
- *   build resolves @import from the filesystem. Load those with a <link> in the head() of
- *   src/routes/__root.tsx and name the family in a --font-* token in @theme inline below.
- */
+/* Tailwind v4 entry: keep imports at the top. */
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
-
-/*
- * Design system definition.
- *
- * The design lives in this file: oklch color tokens on the shadcn variables
- * (--background, --foreground, --primary, --secondary, --muted, --accent, ...) plus
- * new tokens as needed, font tokens, and custom styles and animations.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -42,8 +18,6 @@
   --color-sky-deep: var(--sky-deep);
   --color-navy: var(--navy);
   --color-sun: var(--sun);
-  --font-display: "Inter", system-ui, sans-serif;
-  --font-sans: "Inter", system-ui, sans-serif;
   --color-whatsapp: var(--whatsapp);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -63,7 +37,6 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -77,118 +50,501 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --font-display: "Archivo Black", sans-serif;
+  --font-sans: "Source Sans 3", sans-serif;
 }
 
 :root {
-  --radius: 1rem;
-  --background: oklch(0.86 0.07 235);
-  --foreground: oklch(0.27 0.02 255);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.27 0.02 255);
+  --radius: 0.9rem;
+  --background: oklch(0.9 0.055 228);
+  --foreground: oklch(0.25 0.025 246);
+  --card: oklch(1 0.006 230);
+  --card-foreground: oklch(0.25 0.025 246);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.27 0.02 255);
-  --primary: oklch(0.32 0.09 258);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.02 235);
-  --secondary-foreground: oklch(0.32 0.09 258);
-  --muted: oklch(0.97 0.008 235);
-  --muted-foreground: oklch(0.5 0.02 255);
-  --accent: oklch(0.95 0.07 95);
-  --accent-foreground: oklch(0.3 0.05 80);
+  --popover-foreground: oklch(0.25 0.025 246);
+  --primary: oklch(0.39 0.085 244);
+  --primary-foreground: oklch(0.99 0.004 235);
+  --secondary: oklch(0.95 0.035 226);
+  --secondary-foreground: oklch(0.35 0.08 242);
+  --muted: oklch(0.975 0.012 228);
+  --muted-foreground: oklch(0.47 0.028 245);
+  --accent: oklch(0.93 0.045 224);
+  --accent-foreground: oklch(0.32 0.07 242);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.92 0.012 240);
-  --input: oklch(0.92 0.012 240);
-  --ring: oklch(0.6 0.13 240);
-  --sky: oklch(0.82 0.08 232);
-  --sky-deep: oklch(0.66 0.12 240);
-  --navy: oklch(0.32 0.09 258);
-  --sun: oklch(0.87 0.13 92);
-  --whatsapp: oklch(0.72 0.19 150);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --border: oklch(0.87 0.035 228);
+  --input: oklch(0.9 0.025 228);
+  --ring: oklch(0.58 0.11 235);
+  --sky: oklch(0.86 0.07 225);
+  --sky-deep: oklch(0.56 0.11 235);
+  --navy: oklch(0.3 0.06 244);
+  --sun: oklch(0.9 0.09 95);
+  --whatsapp: oklch(0.62 0.16 151);
+  --paper: oklch(0.995 0.003 230);
+  --panel-edge: oklch(0.91 0.052 224 / 0.72);
+  --glass-surface: oklch(0.995 0.006 230 / 0.77);
+  --glass-edge: oklch(1 0.01 230 / 0.92);
+  --sky-wash: oklch(0.9 0.07 225 / 0.18);
+  --shadow-soft: oklch(0.35 0.06 242 / 0.12);
+  --shadow-button: oklch(0.35 0.085 244 / 0.22);
+  --shadow-whatsapp: oklch(0.3 0.07 150 / 0.28);
+  --whatsapp-halo: oklch(0.62 0.16 151 / 0.36);
+  --whatsapp-halo-end: oklch(0.62 0.16 151 / 0);
+  --chart-1: oklch(0.63 0.11 230);
+  --chart-2: oklch(0.59 0.12 185);
+  --chart-3: oklch(0.42 0.06 245);
+  --chart-4: oklch(0.78 0.12 92);
+  --chart-5: oklch(0.7 0.12 70);
   --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.25 0.025 246);
+  --sidebar-primary: oklch(0.39 0.085 244);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar-accent: oklch(0.95 0.035 226);
+  --sidebar-accent-foreground: oklch(0.32 0.07 242);
+  --sidebar-border: oklch(0.87 0.035 228);
+  --sidebar-ring: oklch(0.58 0.11 235);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
+  --background: oklch(0.18 0.035 245);
+  --foreground: oklch(0.97 0.008 230);
+  --card: oklch(0.23 0.035 245);
+  --card-foreground: oklch(0.97 0.008 230);
+  --popover: oklch(0.23 0.035 245);
+  --popover-foreground: oklch(0.97 0.008 230);
+  --primary: oklch(0.84 0.07 225);
+  --primary-foreground: oklch(0.22 0.04 245);
+  --secondary: oklch(0.29 0.045 243);
+  --secondary-foreground: oklch(0.96 0.01 230);
+  --muted: oklch(0.29 0.04 243);
+  --muted-foreground: oklch(0.73 0.025 230);
+  --accent: oklch(0.31 0.05 238);
+  --accent-foreground: oklch(0.96 0.01 230);
+  --destructive: oklch(0.7 0.18 22);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --ring: oklch(0.7 0.09 228);
+  --sky: oklch(0.46 0.08 235);
+  --sky-deep: oklch(0.69 0.09 230);
+  --navy: oklch(0.8 0.055 230);
+  --sun: oklch(0.85 0.08 95);
+  --whatsapp: oklch(0.68 0.16 151);
+  --paper: oklch(0.23 0.035 245);
+  --panel-edge: oklch(0.33 0.05 235 / 0.82);
+  --glass-surface: oklch(0.26 0.04 242 / 0.8);
+  --glass-edge: oklch(0.7 0.025 230 / 0.35);
+  --sky-wash: oklch(0.42 0.06 225 / 0.2);
+  --shadow-soft: oklch(0.06 0.02 245 / 0.28);
+  --shadow-button: oklch(0.06 0.02 245 / 0.35);
+  --shadow-whatsapp: oklch(0.06 0.02 245 / 0.4);
+  --whatsapp-halo: oklch(0.68 0.16 151 / 0.4);
+  --whatsapp-halo-end: oklch(0.68 0.16 151 / 0);
+  --sidebar: oklch(0.23 0.035 245);
+  --sidebar-foreground: oklch(0.97 0.008 230);
+  --sidebar-primary: oklch(0.84 0.07 225);
+  --sidebar-primary-foreground: oklch(0.22 0.04 245);
+  --sidebar-accent: oklch(0.31 0.05 238);
+  --sidebar-accent-foreground: oklch(0.96 0.01 230);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.7 0.09 228);
 }
 
 @layer base {
   * {
     border-color: var(--color-border);
   }
-
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
 }
 
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-sans); font-size: 1rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-h1, h2, h3 { text-wrap: balance; letter-spacing: -0.015em; }
-.sky-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; background: oklch(0.7 0.12 245); }
-.sky-base, .sky-clouds { position: absolute; inset: 0; background-size: cover; background-position: center; }
-.sky-clouds { inset: -5% -15%; mix-blend-mode: screen; will-change: transform; animation: drift ease-in-out infinite alternate; }
-.sky-far { opacity: .55; animation-duration: 160s; filter: blur(1.5px); }
-.sky-near { opacity: .85; animation-duration: 95s; animation-delay: -30s; }
-@keyframes drift { from { transform: translate3d(-6%,0,0); } to { transform: translate3d(6%,0,0); } }
-@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-@keyframes ping-once { 0% { box-shadow: 0 0 0 0 oklch(0.72 0.19 150 / .5); } 100% { box-shadow: 0 0 0 18px oklch(0.72 0.19 150 / 0); } }
-.panel-enter { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
-.panel { background: oklch(1 0 0); box-shadow: 0 30px 80px -30px oklch(0.32 0.09 258 / .35), 0 2px 6px oklch(0.32 0.09 258 / .06); }
-.highlight { background: linear-gradient(transparent 64%, var(--sun) 64%, var(--sun) 92%, transparent 92%); }
-.tap { transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease; -webkit-tap-highlight-color: transparent; }
-.tap:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -12px oklch(0.32 0.09 258 / .45); }
-.tap:active { transform: scale(.97); box-shadow: none; }
-.tap:focus-visible, a:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
-.wa-float { position: fixed; z-index: 50; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); animation: ping-once 1.6s ease-out 1.5s 2; box-shadow: 0 10px 25px -8px oklch(0.4 0.12 150 / .6); }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .sky-clouds, .panel-enter, .wa-float { animation: none; }
-  .tap:hover, .tap:active { transform: none; }
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
-#lovable-badge { display: none !important; }
+.sky-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--sky);
+  isolation: isolate;
+}
+.sky-base,
+.sky-atmosphere {
+  position: absolute;
+  inset: 0;
+}
+.sky-base {
+  background-size: cover;
+  background-position: center 58%;
+  filter: saturate(0.76) brightness(1.06);
+  transform: scale(1.015);
+}
+.sky-atmosphere {
+  background: linear-gradient(180deg, var(--sky-wash), transparent 42%, var(--sky-wash));
+}
+.sky-track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  width: 200%;
+  height: 100%;
+  will-change: transform;
+  animation: cloud-loop linear infinite;
+  mix-blend-mode: screen;
+}
+.sky-cloud-image {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.sky-far {
+  animation-duration: 220s;
+}
+.sky-far .sky-cloud-image {
+  opacity: 0.34;
+  filter: blur(1px);
+}
+.sky-near {
+  top: auto;
+  bottom: -5vh;
+  height: min(66vh, 760px);
+  animation-duration: 168s;
+  animation-direction: reverse;
+}
+.sky-near .sky-cloud-image {
+  background-position: center bottom;
+  opacity: 0.48;
+}
+@keyframes cloud-loop {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@keyframes panel-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes whatsapp-halo {
+  0% {
+    box-shadow: 0 0 0 0 var(--whatsapp-halo);
+  }
+  100% {
+    box-shadow: 0 0 0 14px var(--whatsapp-halo-end);
+  }
+}
+
+.panel {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(
+    90deg,
+    var(--panel-edge) 0%,
+    var(--paper) 16%,
+    var(--paper) 84%,
+    var(--panel-edge) 100%
+  );
+  border: 1px solid var(--glass-edge);
+  box-shadow:
+    0 22px 64px -36px var(--shadow-soft),
+    0 1px 0 var(--glass-edge) inset;
+}
+.panel-enter {
+  animation: panel-arrive 720ms cubic-bezier(0.2, 0.72, 0.24, 1) both;
+}
+
+.display-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  color: var(--navy);
+}
+.hero-title span {
+  display: block;
+}
+.hero-title-accent {
+  color: var(--sky-deep);
+}
+.eyebrow {
+  margin: 0;
+  color: var(--sky-deep);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.glass-nav {
+  padding: 0.28rem;
+  border: 1px solid var(--glass-edge);
+  border-radius: 999px;
+  background: var(--glass-surface);
+  box-shadow:
+    0 5px 18px -14px var(--shadow-soft),
+    0 1px 0 var(--glass-edge) inset;
+  -webkit-backdrop-filter: blur(12px) saturate(1.05);
+  backdrop-filter: blur(12px) saturate(1.05);
+}
+.nav-link {
+  min-height: 2.5rem;
+  align-items: center;
+  padding: 0 0.82rem;
+  border-radius: 999px;
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+.nav-link:hover {
+  color: var(--primary);
+  background-color: var(--accent);
+}
+
+.btn {
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.button-primary {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 7px 18px -13px var(--shadow-button);
+}
+.glass-action {
+  border: 1px solid var(--glass-edge);
+  background: var(--glass-surface);
+  color: var(--primary);
+  box-shadow:
+    0 4px 16px -13px var(--shadow-soft),
+    0 1px 0 var(--glass-edge) inset;
+  -webkit-backdrop-filter: blur(8px) saturate(1.05);
+  backdrop-filter: blur(8px) saturate(1.05);
+}
+.tap {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+.tap:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -15px var(--shadow-button);
+}
+.tap:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 2px 6px -4px var(--shadow-button);
+}
+.tap:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 3px;
+}
+.inline-link {
+  color: var(--primary);
+  font-weight: 600;
+  text-underline-offset: 0.18em;
+}
+.inline-link:hover {
+  color: var(--sky-deep);
+}
+
+.info-strip {
+  background: var(--border);
+}
+.info-cell {
+  background: var(--glass-surface);
+  color: var(--muted-foreground);
+}
+.info-cell-link {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+.info-cell-link:hover {
+  background: var(--accent);
+  color: var(--foreground);
+}
+.info-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  flex: 0 0 auto;
+  margin-top: 0.12rem;
+  color: var(--sky-deep);
+}
+.service-card,
+.review-card {
+  background: var(--paper);
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+.service-card:hover,
+.review-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sky-deep);
+  box-shadow: 0 12px 28px -24px var(--shadow-button);
+}
+.service-number {
+  color: var(--sky-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.quote-panel {
+  background: var(--secondary);
+}
+.quote-checklist {
+  border: 1px solid var(--glass-edge);
+  background: var(--paper);
+  box-shadow: 0 1px 0 var(--glass-edge) inset;
+}
+.list-dot {
+  border-radius: 50%;
+  background: var(--sky-deep);
+}
+.rating-score {
+  font-family: var(--font-display);
+  letter-spacing: -0.04em;
+}
+.review-stars {
+  color: var(--sky-deep);
+  letter-spacing: 0.12em;
+}
+.location-map {
+  min-height: 18rem;
+}
+.site-footer {
+  color: var(--muted-foreground);
+}
+
+.wa-float {
+  position: fixed;
+  z-index: 50;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  display: inline-flex;
+  min-width: 3.75rem;
+  min-height: 3.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0 1.05rem;
+  border: 1px solid var(--glass-edge);
+  border-radius: 999px;
+  background: var(--whatsapp);
+  color: var(--primary-foreground);
+  box-shadow: 0 10px 25px -10px var(--shadow-whatsapp);
+  animation: whatsapp-halo 1.7s ease-out 1.2s 2;
+  text-decoration: none;
+}
+.wa-icon {
+  width: 1.55rem;
+  height: 1.55rem;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+.wa-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  .panel {
+    background: var(--paper);
+    border-color: var(--glass-edge);
+    box-shadow: 0 16px 46px -34px var(--shadow-soft);
+  }
+  .hero-title {
+    letter-spacing: -0.04em;
+  }
+  .sky-base {
+    background-position: 48% center;
+  }
+  .sky-cloud-image {
+    background-size: auto 100%;
+  }
+  .sky-near {
+    height: 48vh;
+    min-height: 300px;
+    opacity: 0.34;
+  }
+  .site-header {
+    align-items: flex-start;
+  }
+  .brand-lockup {
+    max-width: 65%;
+  }
+  .nav-cta {
+    white-space: nowrap;
+  }
+  .wa-float {
+    width: 3.5rem;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
+    padding: 0;
+  }
+  .wa-label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .sky-track,
+  .panel-enter,
+  .wa-float {
+    animation: none;
+  }
+  .tap:hover,
+  .tap:active,
+  .service-card:hover,
+  .review-card:hover {
+    transform: none;
+  }
+  .nav-link,
+  .tap,
+  .service-card,
+  .review-card {
+    transition-duration: 0.01ms;
+  }
+}
+
+#lovable-badge {
+  display: none !important;
+}
